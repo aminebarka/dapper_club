@@ -1,0 +1,11 @@
+{% autoescape off %}
+
+Hi {{ user.full_name }},
+
+    Your order has been recieved successfully.
+    
+    Order number = {{ order.order_number }}
+    Payment method =  {{ order.payment_method }}
+
+
+{% endautoescape %} 

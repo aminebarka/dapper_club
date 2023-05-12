@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+<section class="section-content padding-y bg">
+  <div class="container card mb-5" style= background-color:#F3F2EE;>
+    <div class="row d-flex justify-content-center">
+      <div class="col-6">
+        {% if '/add_banner/' in request.path %}
+        <h2 class="text-center font-weight-bold text-dark my-5">Add Banner</h2>
+        {% else %}
+        <h2 class="text-center font-weight-bold text-dark my-5">Update Banner</h2>
+        {% endif %}
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="form-group col-md-12  ">
+              <label for="brand">Banner</label>
+              {{form.img}}            
+            </div>
+            <div class="form-group col-md-12  ">
+              <label for="brand_image">Alt text</label>
+              {{form.alt_text}}            
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-dark my-5">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

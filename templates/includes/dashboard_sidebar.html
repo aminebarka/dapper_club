@@ -1,0 +1,51 @@
+<aside class="col-md-3 mt-5 d-block d-md-none">
+  <!--   SIDEBAR   -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <a class="list-group-item {% if '/dashboard/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card  mb-1 "
+            href="{% url 'dashboard' %}"> Dashboard </a>
+          <a class="list-group-item {% if '/my_order/' in request.path %}bg-white text-dark  {% else %} bg-dark text-white {% endif %} card mb-1 "
+            href="{% url 'my_order' %}"> My Orders </a>
+          <a class="list-group-item {% if '/my_profile/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+            href="{% url 'my_profile' %}"> Edit Profile </a>
+          <a class="list-group-item {% if '/change_password/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+            href="{% url 'change_password' %}"> Change Password </a>
+        </ul>
+        <br>
+        <a class="btn btn-warning btn-block" href="{% url 'signout' %}"> <i class="fa fa-power-off"></i> <span
+            class="text">Log out</span> </a>
+      </div>
+    </div>
+  </nav>
+
+  <!--   SIDEBAR //END    -->
+</aside>
+<aside class="col-md-3 mt-5 d-none d-md-block">
+  <!--   SIDEBAR   -->
+  <ul class="list-group text-center">
+    <a class="list-group-item {% if '/dashboard/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card  mb-1 "
+      href="{% url 'dashboard' %}"> Dashboard </a>
+    <a class="list-group-item {% if '/my_order/' in request.path %}bg-white text-dark  {% else %} bg-dark text-white {% endif %} card mb-1 "
+      href="{% url 'my_order' %}"> My Orders </a>
+    <a class="list-group-item {% if '/my_profile/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+      href="{% url 'my_profile' %}"> Edit Profile </a>
+    {% comment %} <a
+      class="list-group-item {% if '/my_address/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+      href="{% url 'my_address' %}"> Manage Address </a> {% endcomment %}
+    {% comment %} <a
+      class="list-group-item {% if '/my_coupon/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+      href="{% url 'my_coupon' %}"> My coupons </a> {% endcomment %}
+    <a class="list-group-item {% if '/change_password/' in request.path %}bg-white text-dark {% else %} bg-dark text-white {% endif %} card mb-1 "
+      href="{% url 'change_password' %}"> Change Password </a>
+  </ul>
+  <br>
+  <a class="btn btn-warning btn-block" href="{% url 'signout' %}"> <i class="fa fa-power-off"></i> <span class="text">Log
+      out</span> </a>
+  <!--   SIDEBAR //END    -->
+</aside>

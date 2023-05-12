@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block content %}
+
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="hero__slider owl-carousel">
+            {% for banner in banners %}
+            <div class="hero__items set-bg" data-setbg="{{ banner.img.url }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h6>Summer Collection</h6>
+                                <h2>Fall - Winter Collections 2030</h2>
+                                <p>A specialist label creating luxury essentials. Ethically crafted with an unwavering
+                                commitment to exceptional quality.</p>
+                                <a href="{% url 'store' %}" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <div class="hero__social">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Banner Section Begin -->
+    <section class="banner spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 offset-lg-4">
+                    <div class="banner__item">
+                        <div class="banner__item__pic">
+                            <img src="{% static 'img/banner/banner-1.jpg' %}" alt="">
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>Clothing Collections 2030</h2>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="banner__item banner__item--middle">
+                        <div class="banner__item__pic">
+                            <img src="{% static 'img/banner/banner-12.jpg' %}" alt="">
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>Accessories</h2>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="banner__item banner__item--last">
+                        <div class="banner__item__pic">
+                            <img src="{% static 'img/banner/banner-3.jpg' %}" alt="">
+                        </div>
+                        <div class="banner__item__text">
+                            <h2>Shoes Spring 2030</h2>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="filter__controls">
+                        <li class="active" >Featured Products</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                {% for product in products %}
+
+                <div class="col-md-3 col-sm-6 mb-2">
+                    <div class="product-grid">
+                        <div class="product-image">
+                            <a href="{{ product.get_url }}" class="image">
+                                <img class="img-1" src="{{ product.image1.url }}" width="200" height="200">
+                                <img class="img-2" src="{{ product.image2.url }}" width="200" height="200">
+                            </a>
+                            <ul class="product-links">
+                                <li><div id="addtowishlist" prod-id="{{ product.id }}"><i class="fa fa-heart"></i></div></li>
+                                <li><div><i class="fa fa-random"></i></div></li>
+                                <!-- <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li> -->
+                            </ul>
+                            <a href="#" class="product-view"><i class="fa fa-search"></i></a>
+                        </div>
+                        <div class="product-content">
+                            <header class="section-heading">
+                                <div class="rating-star d-flex justify-content-center">
+                                    <span>
+                                        <i class="fa fa-star{% if product.averageReview < 0.5 %} disable {% elif product.averageReview >= 0.5 and product.averageReview < 1 %}-half-o {% endif %}"
+                                            aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 1.5 %} disable {% elif product.averageReview >= 1.5 and product.averageReview < 2 %}-half-o {% endif %}"
+                                            aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 2.5 %} disable {% elif product.averageReview >= 2.5 and product.averageReview < 3 %}-half-o {% endif %}"
+                                            aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 3.5 %} disable {% elif product.averageReview >= 3.5 and product.averageReview < 4 %}-half-o {% endif %}"
+                                            aria-hidden="true"></i>
+                                        <i class="fa fa-star{% if product.averageReview < 4.5 %} disable {% elif product.averageReview >= 4.5 and product.averageReview < 5 %}-half-o {% endif %}"
+                                            aria-hidden="true"></i>
+                                        <span class="mx-3">{{product.countReview}} reviews</span>
+                                    </span>
+                                </div>
+            
+                            </header>
+                            <h3 class="title"><a href="{{ product.get_url }}">{{ product.product_name }}</a></h3>
+                            <div class="price">₹ {{ product.price}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+    <!-- Instagram Section Begin -->
+    <section class="instagram spad mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="instagram__pic">
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-1.jpg' %}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-2.jpg' %}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-3.jpg' %}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-4.jpg' %}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-5.jpg' %}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{% static 'img/instagram/instagram-6.jpg' %}"></div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="instagram__text">
+                        <h2>Instagram</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+                        <h3>#dapper_club</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Instagram Section End -->
+{% endblock %}
+    
